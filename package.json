@@ -17,7 +17,7 @@
     "typescript",
     "api"
   ],
-  "author": "Your Name <your.email@example.com>",
+  "author": "Jon Rey Galera <jonreygalera@gmail.com>",
   "license": "ISC",
   "description": "A TypeScript Express.js application with built-in middleware and authentication",
   "repository": {
