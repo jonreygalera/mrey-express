@@ -1,4 +1,4 @@
-import { IDatabaseConfig, TDatabaseDriver } from "../bootstrap/core/database/types/database.type";
+import { IDatabaseConfig, TDatabaseDriver } from "../core/database/types/database.type";
 import env from "../utils/env";
 
 const DatabaseConfig: IDatabaseConfig = {

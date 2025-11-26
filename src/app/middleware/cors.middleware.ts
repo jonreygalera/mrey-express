@@ -1,5 +1,5 @@
 import { corsConfig } from "../../config";
-import Middleware from "./middleware";
+import Middleware from "../../core/middleware/middleware";
 import cors from 'cors';
 
 export default class CorsMiddleware extends Middleware

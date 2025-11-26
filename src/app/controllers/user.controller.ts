@@ -1,14 +1,15 @@
 import { Request, Response } from 'express';
 import { createUser, deleteByUserById, getUserByEmail, getUserById, getUsers } from '../models/user/user.entity';
 import { authentication } from '../../utils/auth';
-import { random } from '../../utils/str';
+import { random } from '../../core/utils/str.util';
+import { errLog, infoLog } from '../../core/utils/logger.util';
 
 export const getUserLists = async (req: Request, res: Response) => {
   try {
     const users = await getUsers();
     return res.status(200).json(users);
   } catch (error) {
-    console.error('>> All users error:', error);
+    errLog('Get user lists error:', error);
     return res.sendStatus(400);
   }
 };
@@ -43,7 +44,7 @@ export const registerUser = async (req: Request, res: Response) => {
 
     res.status(200).json(user).end();
   } catch(error) {
-    console.error(error);
+    errLog('Register user error:', error);
     res.sendStatus(400);
   }
 }
@@ -53,9 +54,9 @@ export const deleteUser = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const deletedUser = await deleteByUserById(id);
-    return res.json(deleteUser);
+    return res.json(deletedUser);
   } catch (error) {
-    console.error('>> Delete user error:', error);
+    errLog('Delete user error:', error);
     return res.sendStatus(400);
   }
 }
@@ -79,7 +80,7 @@ export const updateUser = async (req: Request, res: Response) => {
 
     return res.status(200).json(user).end();
   } catch (error) {
-    console.log('>> Update User error:', error);
+    infoLog('Update User error:', error);
     return res.sendStatus(400);
   }
 }

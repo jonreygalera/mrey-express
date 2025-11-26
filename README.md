@@ -16,4 +16,51 @@ A modern, production-ready Express.js with TypeScript, MongoDB integration, and 
 - **Production Ready** - Built-in configuration for different environments
 - **Scalable Structure** - Easy to extend and maintain
 
-## 🏗️ Project Structure
+```
+mrey-express/
+├── src/
+│   ├── app/
+│   │   ├── middleware/
+│   │   │   ├── api.middleware.ts
+│   │   │   └── rateLimiter.middleware.ts
+│   │   └── providers/
+│   │       ├── globalMiddleware.provider.ts
+│   │       └── register.provider.ts
+│   ├── core/
+│   │   ├── database/
+│   │   │   ├── database.connection.ts
+│   │   │   ├── drivers/
+│   │   │   │   └── mongoose.driver.ts
+│   │   │   └── types/
+│   │   │       └── database.type.ts
+│   │   ├── database.core.ts
+│   │   └── providers/
+│   │       └── system.provider.ts
+│   ├── middleware/
+│   │   └── middleware.ts
+│   ├── utils/
+│   │   └── appMiddleware.ts
+│   ├── kernel.ts
+│   ├── types/
+│   │   └── appKernel.type.ts
+│   ├── config/
+│   │   ├── app.config.ts
+│   │   ├── cors.config.ts
+│   │   ├── database.config.ts
+│   │   ├── index.ts
+│   │   ├── rateLimiter.config.ts
+│   │   └── session.config.ts
+│   └── utils/
+│       └── env.ts
+├── .env
+├── package.json
+├── tsconfig.json
+└── README.md
+```
+
+
+
+
+
+
+

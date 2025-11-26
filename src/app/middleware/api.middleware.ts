@@ -1,4 +1,4 @@
-import Middleware from "./middleware";
+import Middleware from "../../core/middleware/middleware";
 import express from 'express';
 import cookieParser from "cookie-parser";
 import compression from "compression";

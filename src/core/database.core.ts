@@ -2,8 +2,9 @@ import mongoose, { Connection } from 'mongoose';
 import { IDatabaseConfig, IDatabaseConnection, TDatabaseDriver } from './database/types/database.type';
 import DatabaseConnection from './database/database.connection';
 import MongooseDriver from './database/drivers/mongoose.driver';
-import DatabaseDriverException from '../../app/exceptions/databaseDriver.exception';
-import { databaseConfig } from '../../config';
+import DatabaseDriverException from '../app/exceptions/databaseDriver.exception';
+import { databaseConfig } from '../config';
+import { errLog, infoLog } from './utils/logger.util';
 
 export default class DatabaseCore {
   protected databaseConfig? : IDatabaseConfig;
@@ -27,10 +28,10 @@ export default class DatabaseCore {
 
     try {
       await mongoose.connect(uri);
-      console.log(`>> Database connected: ${connection.getHost()}`);
+      infoLog(`Database connected: ${connection.getHost()}`);
       return mongoose.connection;
     } catch (error) {
-      console.error('>> Database connection error:', error);
+      errLog('Database connection error:', error);
       throw error;
     }
   }
@@ -38,9 +39,9 @@ export default class DatabaseCore {
   async closeConnection(): Promise<void> {
     try {
       await mongoose.disconnect();
-      console.log('>> Database connection closed successfully');
+      infoLog('Database connection closed successfully');
     } catch (error) {
-      console.error('>> Error closing the database connection:', error);
+      errLog('>> Error closing the database connection:', error);
       throw error;
     }
   }

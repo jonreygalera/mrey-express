@@ -1,4 +1,4 @@
-import SystemProvider from "../../bootstrap/core/providers/system.provider";
+import SystemProvider from "../../core/providers/system.provider";
 import RoutesProvider from "./routes.provider";
 
 export default class RegisterProvider extends SystemProvider {

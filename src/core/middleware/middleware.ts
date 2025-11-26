@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import IAppKernel from "../../bootstrap/types/appKernel.type";
+import IAppKernel from "../types/appKernel.type";
 
 export default abstract class Middleware {
   constructor(public appKernel: IAppKernel) {}

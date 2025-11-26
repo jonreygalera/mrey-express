@@ -3,6 +3,7 @@ import { appConfig, sessionConfig } from '../config';
 import { Request } from 'express';
 import { getUserBySessionToken } from '../app/models/user/user.entity';
 import jwt from 'jsonwebtoken';
+import { errLog } from '../core/utils/logger.util';
 
 export const authentication = (salt: string, password: string) => {
   return crypto.createHmac('sha256', [salt, password].join('/'))
@@ -36,7 +37,7 @@ export const authUser = async (req: Request) => {
 
     return user;
   } catch (error) {
-    console.error('>> JWT verification error:', error);
+    errLog('JWT verification error:', error);
     return null;
   }
 }

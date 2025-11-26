@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from "express";
-import Middleware from "./middleware";
+import Middleware from "../../core/middleware/middleware";
 import { merge } from "lodash";
 import { authUser } from "../../utils/auth";
+import { errLog } from "../../core/utils/logger.util";
 
 export const isAuthenticated = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -12,7 +13,7 @@ export const isAuthenticated = async (req: Request, res: Response, next: NextFun
     merge(req, { auth: authenticatedUser});
     return next();
   } catch (error) {
-    console.error('>> Authentication error:', error);
+    errLog('Authentication', error);
     return res.sendStatus(500);
   }
 }

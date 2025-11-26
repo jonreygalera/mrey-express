@@ -1,4 +1,4 @@
-import IAppKernel from '../../bootstrap/types/appKernel.type';
+import IAppKernel from '../../core/types/appKernel.type';
 import CorsMiddleware from '../middleware/cors.middleware';
 
 export default class GlobalMiddlewareProvider {

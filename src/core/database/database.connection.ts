@@ -1,4 +1,4 @@
-import { databaseConfig } from "../../../config";
+import { databaseConfig } from "../../config";
 import { IDatabaseConnection, TDatabaseDriver } from "./types/database.type";
 
 export default abstract class DatabaseConnection {

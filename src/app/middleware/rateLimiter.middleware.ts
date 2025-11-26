@@ -1,5 +1,5 @@
 import rateLimit from "express-rate-limit";
-import Middleware from "./middleware";
+import Middleware from "../../core/middleware/middleware";
 import { rateLimiterConfig } from "../../config";
 
 const LIMIT = rateLimiterConfig.rateLimit;

@@ -1,9 +1,9 @@
 import apiRouter from '../../routes/api.routes';
 import authRouter from '../../routes/auth.routes';
 import ApiMiddleware from "../middleware/api.middleware";
-import { appMiddleware } from "../../utils/appMiddleware";
+import { appMiddleware } from "../../core/utils/appMiddleware";
 import AuthMiddleware from "../middleware/auth.middleware";
-import SystemProvider from '../../bootstrap/core/providers/system.provider';
+import SystemProvider from '../../core/providers/system.provider';
 
 export default class RoutesProvider extends SystemProvider {
 

@@ -1,4 +1,4 @@
-import { isBlank, random } from "../utils/str";
+import { isBlank, random } from "../core/utils/str.util";
 
 describe("random", () => {
   test("generate random string", () => {

@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { getUserByEmail } from "../models/user/user.entity";
-import { random } from "../../utils/str";
 import { authentication, jwtAuthentication } from "../../utils/auth";
 import { sessionConfig } from "../../config";
+import { errLog } from "../../core/utils/logger.util";
 
 export const authLogin = async (req: Request, res: Response) => {
   try {
@@ -40,7 +40,7 @@ export const authLogin = async (req: Request, res: Response) => {
 
     res.status(200).json(user).end();
   } catch(error) {
-    console.error(error);
+    errLog('Auth login error:', error);
     res.sendStatus(400);
   }
 }

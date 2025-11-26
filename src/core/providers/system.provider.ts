@@ -1,5 +1,5 @@
-import GlobalMiddlewareProvider from "../../../app/providers/globalMiddleware.provider";
-import IAppKernel from "../../types/appKernel.type";
+import GlobalMiddlewareProvider from "../../app/providers/globalMiddleware.provider";
+import IAppKernel from "../types/appKernel.type";
 
 export default abstract class SystemProvider {
   constructor(public appKernel: IAppKernel) {}

@@ -1,5 +1,5 @@
 import { Express } from 'express';
-import DatabaseCore from '../core/database.core';
+import DatabaseCore from '../database.core';
 
 export default interface IAppKernel {
   appExpress: Express;

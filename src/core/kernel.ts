@@ -1,7 +1,8 @@
 import express, { Express } from 'express';
-import DatabaseCore from './core/database.core';
+import DatabaseCore from './database.core';
 import RegisterProvider from '../app/providers/register.provider';
 import IAppKernel from './types/appKernel.type';
+import { errLog } from './utils/logger.util';
 
 export const appKernel : IAppKernel = {
   appExpress: express(),
@@ -17,6 +18,6 @@ export default async function(): Promise<Express | void> {
     (new RegisterProvider(appKernel)).register();
     return appKernel.appExpress;
   } catch (error) {
-    console.error(error);
+    errLog('Kernel initialization error:', error);
   }
 }
