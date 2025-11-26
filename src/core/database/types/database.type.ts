@@ -12,6 +12,7 @@ export interface IDatabaseConnection {
 }
 
 export interface IDatabaseConfig {
+  enable?: boolean;
   driver: TDatabaseDriver;
   connection: Record<TDatabaseDriver, IDatabaseConnection>
 }

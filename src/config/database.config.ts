@@ -2,6 +2,7 @@ import { IDatabaseConfig, TDatabaseDriver } from "../core/database/types/databas
 import env from "../utils/env";
 
 const DatabaseConfig: IDatabaseConfig = {
+  enable: env('DB_ENABLE', 'false') === 'true',
   driver: env('DB_CONNECTION_DRIVER', 'mongoose' as TDatabaseDriver),
   connection: { 
     'mongoose': {

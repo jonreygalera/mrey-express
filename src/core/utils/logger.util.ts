@@ -14,3 +14,7 @@ export const infoLog = (...args: any[]) => {
 export const errLog = (...args: any[]) => {
   error(chalk.yellow(MSG_PREFIX), chalk.red(...args));
 };
+
+export const warnLog = (...args: any[]) => {
+  log(chalk.yellow(MSG_PREFIX), chalk.blue(...args));
+};

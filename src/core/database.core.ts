@@ -4,7 +4,7 @@ import DatabaseConnection from './database/database.connection';
 import MongooseDriver from './database/drivers/mongoose.driver';
 import DatabaseDriverException from '../app/exceptions/databaseDriver.exception';
 import { databaseConfig } from '../config';
-import { errLog, infoLog } from './utils/logger.util';
+import { errLog, infoLog, warnLog } from './utils/logger.util';
 
 export default class DatabaseCore {
   protected databaseConfig? : IDatabaseConfig;
@@ -24,6 +24,11 @@ export default class DatabaseCore {
 
   async createConnection() : Promise<Connection> {
     const connection = this.getConnection();
+    if (!databaseConfig.enable) {
+      warnLog('Database is disabled in the configuration. Skipping database connection.');
+      // @ts-ignore
+      return;
+    }
     const uri: string = connection.getUriConnection();
 
     try {
