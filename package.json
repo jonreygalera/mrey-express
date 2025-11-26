@@ -1,7 +1,7 @@
 {
   "name": "@mreycode/mrey-express",
   "version": "1.0.0",
-  "main": "dist/server.js",
+  "main": "src/server.ts",
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
@@ -23,9 +23,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jonreygalera/mrey-express-cli/tree/main/template"
-  },
-  "engines": {
-    "node": ">=14.0.0"
   },
   "dependencies": {
     "@types/compression": "^1.8.1",
