@@ -45,4 +45,11 @@ const app = express();
 //   initializeApp();
 // }
 
+const appKernel: IAppKernel = {
+  appExpress: app,
+  database: DatabaseCore.getInstance()
+};
+
+kernel(appKernel);
+
 export default app;
