@@ -8,7 +8,10 @@ import appConfig from './config/app.config';
 
 const app = express();
 
+let isInitialized = false;
+
 const initializeApp = async () => {
+  if (isInitialized) return app;
   try {
     const appKernel: IAppKernel = {
       appExpress: app,
@@ -16,14 +19,15 @@ const initializeApp = async () => {
     };
 
     await kernel(appKernel);
+    isInitialized = true;
 
-    // Only listen if not in a serverless environment
+    // For Vercel: Do not listen here, just initialize
     if (!appConfig.severless) {
       appKernel.appExpress.listen(config.port, () => {
         infoLog(`Listening to port: ${config.port}`);
       });
     } else {
-      infoLog(`Running on serverless environment`);
+      infoLog(`Running in serverless or Vercel environment`);
     }
 
     return appKernel.appExpress;
@@ -33,6 +37,12 @@ const initializeApp = async () => {
   }
 };
 
-initializeApp();
+if (!appConfig.severless) {
+  // Only start server if not in serverless mode and not on Vercel
+  initializeApp();
+} else {
+  // For Vercel, export a handler (the default export)
+  initializeApp();
+}
 
 export default app;
