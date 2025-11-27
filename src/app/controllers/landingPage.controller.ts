@@ -367,6 +367,7 @@ export const landingPage = (req: Request, res: Response) => {
                 <div class="cta-row">
                     <a href="https://github.com/jonreygalera/mrey-express" class="cta-button" target="_blank" rel="noopener">GitHub</a>
                     <a href="https://www.npmjs.com/package/@mreycode/mrey-express-cli" class="cta-button" target="_blank" rel="noopener">npm</a>
+                    <a href="https://jonreygalera.vercel.app" class="cta-button" target="_blank" rel="noopener">Portfolio</a>
                 </div>
             </div>
         </div>
