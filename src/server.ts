@@ -4,24 +4,35 @@ import config from './config/app.config';
 import { errLog, infoLog } from './core/utils/logger.util';
 import IAppKernel from './core/types/appKernel.type';
 import DatabaseCore from './core/database.core';
+import appConfig from './config/app.config';
 
 const app = express();
 
-(async () => {
+const initializeApp = async () => {
   try {
-    const appKernel : IAppKernel = {
+    const appKernel: IAppKernel = {
       appExpress: app,
       database: DatabaseCore.getInstance()
     };
 
     await kernel(appKernel);
-    appKernel.appExpress.listen(config.port, () => {
-      infoLog(`Listening to port: ${config.port}`);
-    });
+
+    // Only listen if not in a serverless environment
+    if (!appConfig.severless) {
+      appKernel.appExpress.listen(config.port, () => {
+        infoLog(`Listening to port: ${config.port}`);
+      });
+    } else {
+      infoLog(`Running on serverless environment`);
+    }
+
+    return appKernel.appExpress;
   } catch (error) {
-    errLog('Failed to start the server:', error);
-    process.exit(1);
+    errLog('Failed to initialize the server:', error);
+    throw error;
   }
-})();
+};
+
+initializeApp();
 
 export default app;
