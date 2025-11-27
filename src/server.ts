@@ -29,6 +29,8 @@ const app = express();
 
 app.use('/', webRouter);
 
-app.listen(appConfig.port, () => {
-  infoLog(`Listening to port: ${appConfig.port}`);
-});
+// app.listen(appConfig.port, () => {
+//   infoLog(`Listening to port: ${appConfig.port}`);
+// });
+
+export default app;
