@@ -3,6 +3,7 @@ import RegisterProvider from '../app/providers/register.provider';
 import IAppKernel from './types/appKernel.type';
 import { errLog } from './utils/logger.util';
 import DatabaseCore from './database.core';
+import webRoutes from '../routes/web.routes';
 
 const app = express();
 const appKernel: IAppKernel = {
@@ -10,8 +11,9 @@ const appKernel: IAppKernel = {
   database: DatabaseCore.getInstance()
 };
 
-appKernel.database.createConnection();
-(new RegisterProvider(appKernel)).register();
+app.use('/', webRoutes);
+// appKernel.database.createConnection();
+// (new RegisterProvider(appKernel)).register();
 
 // const app = (appKernel: IAppKernel) => {
 //   try {
