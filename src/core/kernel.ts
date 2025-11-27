@@ -7,7 +7,7 @@ import { errLog } from './utils/logger.util';
 export default async function(appKernel: IAppKernel): Promise<Express | void> {
   try {
     // Database connection initialization with error handling
-    await appKernel.database.createConnection();
+    // await appKernel.database.createConnection();
 
     // Register all application providers for runtime execution
     (new RegisterProvider(appKernel)).register();
