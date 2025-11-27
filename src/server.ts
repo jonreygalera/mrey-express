@@ -7,22 +7,20 @@ import DatabaseCore from './core/database.core';
 
 const app = express();
 
-(async () => {
-  try {
-    const appKernel : IAppKernel = {
-      appExpress: app,
-      database: DatabaseCore.getInstance()
-    };
+try {
+  const appKernel : IAppKernel = {
+    appExpress: app,
+    database: DatabaseCore.getInstance()
+  };
 
-    await kernel(appKernel);
-    // UNCOMMENT FOR non-vercel prod
-    // appKernel.appExpress.listen(config.port, () => {
-    //   infoLog(`Listening to port: ${config.port}`);
-    // });
-  } catch (error) {
-    errLog('Failed to start the server:', error);
-    process.exit(1);
-  }
-})();
+  kernel(appKernel);
+  // UNCOMMENT FOR non-vercel prod
+  // appKernel.appExpress.listen(config.port, () => {
+  //   infoLog(`Listening to port: ${config.port}`);
+  // });
+} catch (error) {
+  errLog('Failed to start the server:', error);
+  process.exit(1);
+}
 
 export default app;
