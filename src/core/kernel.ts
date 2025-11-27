@@ -1,13 +1,8 @@
-import express, { Express } from 'express';
+import { Express } from 'express';
 import RegisterProvider from '../app/providers/register.provider';
 import IAppKernel from './types/appKernel.type';
 import { errLog } from './utils/logger.util';
 import DatabaseCore from './database.core';
-import webRoutes from '../routes/web.routes';
-
-
-// appKernel.database.createConnection();
-// (new RegisterProvider(appKernel)).register();
 
 export default async function(appServer: Express) {
   try {
@@ -17,7 +12,7 @@ export default async function(appServer: Express) {
     };
 
     // Database connection initialization with error handling
-    // await appKernel.database.createConnection();
+    await appKernel.database.createConnection();
 
     // Register all application providers for runtime execution
     (new RegisterProvider(appKernel)).register();

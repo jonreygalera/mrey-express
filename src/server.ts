@@ -1,6 +1,6 @@
 import { appConfig } from "./config";
 import { infoLog, errLog } from "./core/utils/logger.util";
-import express, { Express } from 'express';
+import express from 'express';
 import kernel from './core/kernel';
 
 const app = express();
