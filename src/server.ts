@@ -16,9 +16,9 @@ const app = express();
 
     await kernel(appKernel);
     // UNCOMMENT FOR non-vercel prod
-    appKernel.appExpress.listen(config.port, () => {
-      infoLog(`Listening to port: ${config.port}`);
-    });
+    // appKernel.appExpress.listen(config.port, () => {
+    //   infoLog(`Listening to port: ${config.port}`);
+    // });
   } catch (error) {
     errLog('Failed to start the server:', error);
     process.exit(1);
