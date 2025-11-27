@@ -5,16 +5,18 @@ import { app } from './app.util';
 const log = console.log;
 const error = console.error;
 
-const MSG_PREFIX = `[mrey-express@${app('version')} ${formatDate(new Date())}]`;
+function getMsgPrefix() {
+  return `[mrey-express@${app('version')} ${formatDate(new Date())}]`;
+}
 
 export const infoLog = (...args: any[]) => {
-  log(chalk.yellow(MSG_PREFIX), chalk.green(...args));
+  log(chalk.yellow(getMsgPrefix()), chalk.green(...args));
 };
 
 export const errLog = (...args: any[]) => {
-  error(chalk.yellow(MSG_PREFIX), chalk.red(...args));
+  error(chalk.yellow(getMsgPrefix()), chalk.red(...args));
 };
 
 export const warnLog = (...args: any[]) => {
-  log(chalk.yellow(MSG_PREFIX), chalk.blue(...args));
+  log(chalk.yellow(getMsgPrefix()), chalk.blue(...args));
 };
