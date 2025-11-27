@@ -2,9 +2,10 @@
 // let isInitialized = false;
 
 import { appConfig } from "./config";
-import app from "./core/app";
+// import app from "./core/app";
 import { infoLog } from "./core/utils/logger.util";
-
+import webRoutes from './routes/web.routes';
+import express, { Express } from 'express';
 // const initializeApp = async () => {
 //   if (isInitialized) return app;
 //   try {
@@ -50,6 +51,9 @@ import { infoLog } from "./core/utils/logger.util";
 
 // export default app;
 
-app.listen(appConfig.port, () => {
-  infoLog(`Listening to port: ${appConfig.port}`);
-});
+// app.listen(appConfig.port, () => {
+//   infoLog(`Listening to port: ${appConfig.port}`);
+// });
+
+const app = express();
+app.use('/', webRoutes);
