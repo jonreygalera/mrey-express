@@ -1,14 +1,9 @@
-import express from 'express';
-import kernel from './core/kernel';
-import config from './config/app.config';
-import { errLog, infoLog } from './core/utils/logger.util';
-import IAppKernel from './core/types/appKernel.type';
-import DatabaseCore from './core/database.core';
-import appConfig from './config/app.config';
-
-const app = express();
 
 // let isInitialized = false;
+
+import { appConfig } from "./config";
+import app from "./core/app";
+import { infoLog } from "./core/utils/logger.util";
 
 // const initializeApp = async () => {
 //   if (isInitialized) return app;
@@ -45,11 +40,16 @@ const app = express();
 //   initializeApp();
 // }
 
-const appKernel: IAppKernel = {
-  appExpress: app,
-  database: DatabaseCore.getInstance()
-};
+// const appKernel: IAppKernel = {
+//   appExpress: app,
+//   database: DatabaseCore.getInstance()
+// };
 
-kernel(appKernel);
 
-export default app;
+// kernel(appKernel);
+
+// export default app;
+
+app.listen(appConfig.port, () => {
+  infoLog(`Listening to port: ${appConfig.port}`);
+});
